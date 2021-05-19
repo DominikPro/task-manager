@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React from "react";
+import TodoList from "./Page/TodoList.jsx";
+import DaySchedule from "./Page/DaySchedule";
+import HomePage from "./Page/HomePage";
+import MainMenu from "./components/menu/MainMenu";
+import TasksDone from "./Page/Tasksdone";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<Router>
+			<div class="container-fluid">
+				<MainMenu />
+				<Switch>
+					<Route path="/" exact>
+						<HomePage />
+					</Route>
+					<Route path="/daySchedule">
+						<DaySchedule />
+					</Route>
+					<Route path="/todo-list">
+						<TodoList />
+					</Route>
+					<Route path="/tasks-done">
+						<TasksDone />
+					</Route>
+				</Switch>
+			</div>
+		</Router>
+	);
 }
 
 export default App;

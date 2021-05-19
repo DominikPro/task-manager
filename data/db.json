@@ -1,0 +1,12 @@
+{
+  "tasks":[
+      {"id": 1, "taskTitle": "Milk", "taskDescription":"buy 10 liters of milk", "priority": false,  "date": "13-03-2021"},
+      {"id": 2, "taskTitle": "Butter", "taskDescription":"k", "priority": true,  "date": "13-03-2021"},
+      {"id": "sdsds", "taskTitle": "Bread", "taskDescription":"", "priority": true,  "date": "13-03-2021"},
+      {"id": "asdasd", "taskTitle": "Marmelade", "taskDescription":"", "priority": false,  "date": "13-03-2021"},
+      {"id": "545dfdf", "taskTitle": "Rice", "taskDescription":"", "priority": false,  "date": "13-03-2021"},
+      {"id": 6, "taskTitle": "Chicken", "taskDescription":"", "priority": false,  "date": "13-03-2021"},
+      {"id": 7, "taskTitle": "Mint leaves", "taskDescription":"", "priority": false,  "date": "13-03-2021"},
+      {"id": 8888, "taskTitle": "Coffee", "taskDescription":"", "priority": true,  "date": "13-03-2021"}
+  ]
+}
