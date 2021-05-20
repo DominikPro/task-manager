@@ -2,6 +2,8 @@ import React, { useState, useContext, Children } from 'react';
 import { Badge, Accordion, Card, Row, Col, Form, Button, InputGroup, Checkbox } from 'react-bootstrap/'
 import { BsBoxArrowInUp, BsBoxArrowInDown, } from "react-icons/bs";
 import { GrCheckboxSelected, GrCheckbox } from "react-icons/gr";
+import { MdDone} from "react-icons/md"; 
+
 import showDate from '../actions/shwoDate'
 import DatePickerInput from "../shared/DatePickerInput"
 import ContextAwareToggle from './ContextAwareToggle'
@@ -28,7 +30,7 @@ const Item = (props) => {
                                     
                                     <Row >
                                         <Col xs={1} sm={1} >
-                                        <Form.Check type="checkbox" />
+                                        <Button variant="outline-info"><MdDone size={15}/></Button>
                                                                           
                                         </Col>
                                         <Col xs={1} sm={1}>
@@ -93,7 +95,7 @@ const Item = (props) => {
                                                     <Col sm={12} md={10} >
                                                         <Form.Label>Describe the task</Form.Label>
         
-                                                        <Form.Control as="textarea" rows={2} id={item.id} onBlur={(e) => dispatch(editTaskDescryption(e))} >
+                                                        <Form.Control as="textarea" rows={1} id={item.id} onBlur={(e) => dispatch(editTaskDescryption(e))} >
                                                             {item.taskDescription}
                                                         </Form.Control>
 

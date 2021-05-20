@@ -2,38 +2,47 @@ import React from "react";
 import { ButtonGroup, Button, Row, Col } from "react-bootstrap";
 import { Input } from "../Input/Input";
 import { Link } from "react-router-dom";
+import { BsListTask, BsListCheck, BsCardList } from "react-icons/bs";
+import { VscHome } from "react-icons/vsc";
 
 const MainMenu = () => {
     return (
         <>
-            <Row className="justify-content-center"> 
-                <Col xs={12} md={ 12}>
-                <ButtonGroup className="mt-3" size="lg" >
-                    
-                        <Link to="/">
-                            <Button className="m-1" variant="info"> Home</Button>
-                        </Link>
-                        <Link to="/daySchedule">
-                            <Button className="m-1" variant="info"> My day</Button>
-                        </Link>
-                        <Link to="/todo-list">
-                            <Button className="m-1" variant="info"> Task list</Button>
-                        </Link>
-                        <Link to="/tasks-done">
-                            <Button className="m-1" variant="info"> Tasks done</Button>
-                        </Link>
-    
-                </ButtonGroup>
+            <Row className="justify-content-center fixed-bottom bg-white">
+
+                <Col xs={10} md={10}>
+                    <Input />
                 </Col>
-                <Col xs ={10} md={10}>
-                        <Input />
-                </Col>
+
+                <Row className="row justify-content-around">
+
+                    <Col className=" " xs={12} md={12}>
+
+                        <ButtonGroup className="mt-2, mb-2" size="lg" >
+                            <Col xs={3}><Link to="/">
+                                <Button className="m-1" variant="info"> <VscHome size={30} /></Button>
+                            </Link></Col>
+                            <Col xs={3}><Link to="/daySchedule">
+                                <Button className="m-1" variant="info"> <BsCardList size={30} /></Button>
+                            </Link></Col>
+                            <Col xs={3}> <Link to="/todo-list">
+                                <Button className="m-1" variant="info"><BsListTask size={30} /></Button>
+                            </Link></Col>
+                            <Col xs={3}> <Link to="/tasks-done">
+                                <Button className="m-1" variant="info"> <BsListCheck size={30} /></Button>
+                            </Link></Col>
+                        </ButtonGroup>
+
+                    </Col>
+
+                </Row>
+
 
             </Row>
             <Row>
-                
+
             </Row>
-            
+
         </>
     );
 };

@@ -37,14 +37,14 @@ export const Input = () => {
 
 	return (
 		<Row
-			className="justify-content-center"
+			className="justify-content-center cbg-light"
 			onKeyDown={(e) => handleKeyDown(e)}
 			onFocus={() => { setOpen(true); setNewTask((prevState) => ({ ...prevState, ["id"]: uuidv4(), ["date"]: today })) }}
 		>
 			{/* <Col xs={10} sm={10} md={8} lg={8} xl={6}> */}
 			<Col  >
 
-				<InputGroup className="mb-3 mt-3" >
+				<InputGroup className="mb-1 mt-1" >
 					<FormControl
 						onChange={() => setNewTask((prevState) => ({ ...prevState, ["taskTitle"]: refTaskTitle.current.value }))}
 						value={newTask.taskTitle}
@@ -54,11 +54,11 @@ export const Input = () => {
 						aria-label="Describe the challenge"
 						aria-describedby="Describe the challenge"
 					/>
-					<Button onClick={() => { if (newTask.taskTitle.length > 0) { dispatch(addTask(newTask)); setOpen(false); setNewTask(emptyTask) } else alert("Hi! You forgot to enter the task;)") }}>Go!</Button>
+					<Button variant="outline-info" className="ml-1" onClick={() => { if (newTask.taskTitle.length > 0) { dispatch(addTask(newTask)); setOpen(false); setNewTask(emptyTask) } else alert("Hi! You forgot to enter the task;)") }}>Go!</Button>
 				</InputGroup>
 				{open ? (
 					<Card.Body>
-						<Row className="mb-3 ">
+						<Row className="mb-2">
 							<Col xs={12} sm={ 6} >
 								<Form.Check
 									checked={newTask.priority}
@@ -70,7 +70,7 @@ export const Input = () => {
 
 							<Col xs={12} sm={6 }>
 								{/* <DatePickerInput setEndDate={(slecetedDate) => { setNewDate(slecetedDate)} }/> */}
-								<Badge className="mr-1"  pill variant="info">Execution time</Badge>
+								<Badge className="mb-1"  pill variant="info">Execution time</Badge>
 								<DatePickerInput setEndDate={(slecetedDate) => setNewTask((prevState) => ({ ...prevState, ["endDate"]: slecetedDate }))} resetDate={newTask.date} />
 
 							</Col>
@@ -80,9 +80,9 @@ export const Input = () => {
 						<Form.Group controlId="exampleForm.ControlTextarea1">
 							<Row>
 								<Col xs={12}>
-									<Form.Label>
+									{/* <Form.Label>
 										Describe the task
-									</Form.Label>
+									</Form.Label> */}
 									<Form.Control
 										onChange={() => setNewTask((prevState) => ({ ...prevState, ["taskDescription"]: refTaskDescription.current.value }))}
 										value={newTask.taskDescription}
@@ -98,11 +98,11 @@ export const Input = () => {
 
 						<Row>
 							<Col className="d-flex justify-content-end" xs={12}>
-								<Button className="mr-2" variant="outline-warning" size="sm" onClick={() => setNewTask(emptyTask)}>
+								<Button className="mr-2" variant="outline-info" size="sm" onClick={() => setNewTask(emptyTask)}>
 									Clean
 								</Button>
 								<Button
-									variant="outline-warning"
+									variant="outline-info"
 
 									size="sm"
 									onClick={() => { setNewTask(emptyTask); setOpen(false); }}

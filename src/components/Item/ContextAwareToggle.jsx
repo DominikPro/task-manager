@@ -18,7 +18,7 @@ const ContextAwareToggle = ({ eventKey, callback }) => {
                 size="sm"
                 onClick={decoratedOnClick}
             >
-                {isCurrentEventKey ? <BsBoxArrowInUp size="1.5em" color="green"/> : <BsBoxArrowInDown size="1.5em" color="green"/>}
+                {isCurrentEventKey ? <BsBoxArrowInUp size={30} color="green"/> : <BsBoxArrowInDown size={30} color="green"/>}
             </Button>
 
         );
