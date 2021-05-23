@@ -8,8 +8,7 @@ const TodoList = () => {
 	return (
 		
 			<Row>
-				<Col sm={12}>
-					{/* <Input /> */}
+				<Col className="overflow-hidden" sm={12}>
 					<Item />
 				</Col>
 			</Row>

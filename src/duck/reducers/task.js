@@ -7,7 +7,7 @@ import {
 	SHOW_TASK_INPUT,
 	MODIFY_END_DATE,
 } from "../actions/index";
-import { tasks } from "./state";
+import { tasks, quotes } from "./state";
 
 const taskReducer = (state = tasks, action) => {
 	let findTaskIdInState = (element) => {

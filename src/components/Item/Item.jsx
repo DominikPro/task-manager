@@ -1,13 +1,10 @@
 import React, { useState, useContext, Children } from 'react';
-import { Badge, Accordion, Card, Row, Col, Form, Button, InputGroup, Checkbox } from 'react-bootstrap/'
-import { BsBoxArrowInUp, BsBoxArrowInDown, } from "react-icons/bs";
-import { GrCheckboxSelected, GrCheckbox } from "react-icons/gr";
+import { Badge, Accordion, Card, Row, Col, Form, Button, InputGroup, Checkbox } from 'react-bootstrap/';
+import { BsFillTrash2Fill, BsFillExclamationTriangleFill } from "react-icons/bs";
 import { MdDone} from "react-icons/md"; 
-
 import showDate from '../actions/shwoDate'
 import DatePickerInput from "../shared/DatePickerInput"
 import ContextAwareToggle from './ContextAwareToggle'
-import { BsFillTrash2Fill, BsFillExclamationTriangleFill } from "react-icons/bs";
 import { changePriority, editTaskDescryption, removeTask, editTaskTitle, showTaskInput, modifyEndDate} from "../../duck/actions/index";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -17,6 +14,8 @@ const Item = (props) => {
     const dispatch = useDispatch()
     let [focus, setFocus] = useState(false)
     const tasks = useSelector(state => state.taskReducer)
+    const quotes = useSelector(state => state.quotesReducer)
+    console.log(quotes) 
 
     return (
         <>
@@ -67,11 +66,11 @@ const Item = (props) => {
 
                                     </Row>
 
-                                    <Accordion.Collapse key={item.id} eventKey="0">
+                                    <Accordion.Collapse   key={item.id} eventKey="0">
 
-                                        <Card.Body>
-
-                                            <Form.Group controlId="exampleForm.ControlTextarea1" >
+                                        <Card.Body  >
+                                        <Card  className="pl-3 pr-4 pt-3 mt-2" border="secondary">
+                                            <Form.Group  controlId="exampleForm.ControlTextarea1" >
                                                 <Row className="d-flex justify-content-between mb-2">
                                                     <Col xs={12} sm={2}>
                                                     {/* <Badge pill variant="info"> {`Created  - ${showDate(item.date)}`}</Badge> */}
@@ -107,7 +106,7 @@ const Item = (props) => {
                                                     <Button id={item.id} onClick={(e) => dispatch(removeTask(e))} variant="danger" size="sm"><BsFillTrash2Fill size="1.5em" className="mr-2" />Delet</Button>
                                                 </Row>
                                             </Form.Group>
-
+                                            </Card>
                                         </Card.Body>
 
                                     </Accordion.Collapse>

@@ -5,13 +5,13 @@ import DaySchedule from "./Page/DaySchedule";
 import HomePage from "./Page/HomePage";
 import MainMenu from "./components/menu/MainMenu";
 import TasksDone from "./Page/Tasksdone";
+import { Container } from "react-bootstrap";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function App() {
 	return (
 		<Router>
-			<div class="container-fluid">
-				<MainMenu />
+			<Container fluid>
 				<Switch>
 					<Route path="/" exact>
 						<HomePage />
@@ -26,7 +26,8 @@ function App() {
 						<TasksDone />
 					</Route>
 				</Switch>
-			</div>
+				<MainMenu />
+			</Container>
 		</Router>
 	);
 }

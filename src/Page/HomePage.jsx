@@ -1,11 +1,13 @@
 import React from 'react';
+import Quote from "../components/Quote/Quote"
+import { Row, Col } from 'react-bootstrap';
 
 const HomePage = () => {
     return (
         <>
-            <h1>Siema xD</h1>
+            <Quote />
         </>
-     );
+    );
 }
- 
+
 export default HomePage;
