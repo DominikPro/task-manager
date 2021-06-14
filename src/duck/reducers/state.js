@@ -8,7 +8,7 @@ export let tasks = [
 		priority: false,
 		date: "",
 		endDate: "",
-		addToMyDay: false,
+		myDay: false,
 	},
 	{
 		id: 2,
@@ -19,7 +19,7 @@ export let tasks = [
 		priority: true,
 		date: 1619129374000,
 		endDate: "",
-		addToMyDay: false,
+		myDay: false,
 	},
 	{
 		id: 3,
@@ -30,7 +30,7 @@ export let tasks = [
 		priority: true,
 		date: 1619129374000,
 		endDate: "",
-		addToMyDay: false,
+		myDay: true,
 	},
 	{
 		id: 4,
@@ -41,7 +41,7 @@ export let tasks = [
 		priority: false,
 		date: 1619129374000,
 		endDate: "",
-		addToMyDay: false,
+		myDay: false,
 	},
 	{
 		id: 5,
@@ -52,7 +52,7 @@ export let tasks = [
 		priority: false,
 		date: 1619129374000,
 		endDate: "",
-		addToMyDay: false,
+		myDay: false,
 	},
 	{
 		id: 8,
@@ -63,7 +63,7 @@ export let tasks = [
 		priority: true,
 		date: 1619129978000,
 		endDate: "",
-		addToMyDay: false,
+		myDay: false,
 	},
 ];
 
@@ -76,7 +76,7 @@ export let emptyTaskTemplate = {
 	priority: false,
 	date: "",
 	endDate: "",
-	addToMyDay: false,
+	myDay: false,
 };
 
 export let quotes = [

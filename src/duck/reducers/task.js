@@ -6,8 +6,10 @@ import {
 	EDIT_TASK_TITLE,
 	SHOW_TASK_INPUT,
 	MODIFY_END_DATE,
+	TASK_DONE,
+	Add_TO_MY_Day,
 } from "../actions/index";
-import { tasks, quotes } from "./state";
+import { tasks } from "./state";
 
 const taskReducer = (state = tasks, action) => {
 	let findTaskIdInState = (element) => {
@@ -62,16 +64,25 @@ const taskReducer = (state = tasks, action) => {
 			let taskList = [...state];
 			taskList[taskList.findIndex(findTaskIdInState)].taskDescription =
 				action.payLoad.target.value;
-
+			console.log(taskList)
 			return taskList;
 
 		case CHANGE_PRIORITY:
 			let newTaskList = [...state];
 			let taskIdInState = newTaskList.findIndex(findTaskIdInState);
-
 			newTaskList[taskIdInState].priority = !newTaskList[taskIdInState].priority;
 			return newTaskList;
 
+		case TASK_DONE:
+			let taskListCopy = [...state]
+			let indexOfDoneTask = taskListCopy.findIndex((task) => task.id === action.payLoad)
+			taskListCopy[indexOfDoneTask].done = !taskListCopy[indexOfDoneTask].done;
+			return taskListCopy;
+		case Add_TO_MY_Day:
+			let taskListBeforAddToMayDay = [...state]
+			let indexofTaskMarkMayDay = taskListBeforAddToMayDay.findIndex((task) => task.id === action.payLoad)
+			taskListBeforAddToMayDay[indexofTaskMarkMayDay].myDay = !taskListBeforAddToMayDay[indexofTaskMarkMayDay].myDay
+			return taskListBeforAddToMayDay
 		default:
 			return state;
 	}

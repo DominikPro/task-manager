@@ -5,6 +5,8 @@ export const EDIT_TASK_DESCRYPTION = "EDIT_TASK_DESCRYPTION";
 export const CHANGE_PRIORITY = "CHANGE_PRIORITY";
 export const SHOW_TASK_INPUT = "SHOW_TASK_INPUT";
 export const MODIFY_END_DATE = "MODIFY_END_DATE";
+export const TASK_DONE = "TASK_DONE";
+export const Add_TO_MY_Day = "Add_TO_MY_Day,";
 
 export const addTask = (newTask) => {
 	return {
@@ -57,3 +59,18 @@ export const changePriority = (itemId) => {
 		payLoad: itemId,
 	};
 };
+
+export const taskDone = (itemId) => {
+	return {
+		type: TASK_DONE,
+		payLoad: itemId
+	}
+}
+
+export const addToMyDay = (itemId) => {
+	return {
+		type: Add_TO_MY_Day,
+		payLoad: itemId
+	}
+
+}
