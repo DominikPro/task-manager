@@ -11,7 +11,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 function App() {
 	return (
 		<Router>
-			<Container fluid>
+			<Container fluid style={{ marginBottom: "120px" }} >
 				<Switch>
 					<Route path="/" exact>
 						<HomePage />
@@ -28,7 +28,7 @@ function App() {
 				</Switch>
 				<MainMenu />
 			</Container>
-		</Router>
+		</Router >
 	);
 }
 

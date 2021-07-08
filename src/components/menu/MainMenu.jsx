@@ -1,17 +1,17 @@
 import React from "react";
-import { ButtonGroup, Button, Row, Col } from "react-bootstrap";
-import { Input } from "../Input/Input";
 import { Link } from "react-router-dom";
+//--------------------------------------------------------------------------------------------------
+import { ButtonGroup, Button, Row, Col } from "react-bootstrap";
 import { BsListTask, BsListCheck, BsCardList } from "react-icons/bs";
 import { VscHome } from "react-icons/vsc";
+//--------------------------------------------------------------------------------------------------
+import { Input } from "../Input/Input";
 
 const MainMenu = () => {
     return (
         <>
             <Row className="justify-content-center fixed-bottom bg-white">
-            {/* <Row className="justify-content-center "> */}
-
-                
+              
                 <Col xs={10} md={10}>
                     <Input />
                 </Col>
@@ -37,10 +37,8 @@ const MainMenu = () => {
 
                 </Row>
 
-
             </Row>
   
-
         </>
     );
 };

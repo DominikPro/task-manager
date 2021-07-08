@@ -17,17 +17,17 @@ const taskReducer = (state = tasks, action) => {
 	};
 	switch (action.type) {
 		case ADD_TASK:
-			// break;
+
 			let oldTaskList = [...state];
 			oldTaskList.unshift(action.payLoad);
-			console.log(action.payLoad);
-			console.log(oldTaskList);
 
 			return oldTaskList;
+
 		case REMOVE_TASK:
 			let fullTaskList = [...state];
 			let removedTaskId = fullTaskList.findIndex(findTaskIdInState);
 			fullTaskList.splice(removedTaskId, 1);
+
 			return fullTaskList;
 
 		case SHOW_TASK_INPUT:
@@ -35,6 +35,7 @@ const taskReducer = (state = tasks, action) => {
 			let modTaskShowInput = taskShwoInput.findIndex(findTaskIdInState);
 			taskShwoInput[modTaskShowInput].editTaskTitle =
 				!taskShwoInput[modTaskShowInput].editTaskTitle;
+
 			return taskShwoInput;
 
 		case MODIFY_END_DATE:
@@ -45,10 +46,6 @@ const taskReducer = (state = tasks, action) => {
 			});
 			const modTaskListEnddate = (taskListEnddate[itemIndex].endDate =
 				action.payLoad.slecetedDate);
-			console.log(taskListEnddate);
-			console.log(typeof action.payLoad.id);
-			console.log(action.payLoad.slecetedDate);
-			console.log(itemIndex);
 
 			return taskListEnddate;
 
@@ -56,8 +53,7 @@ const taskReducer = (state = tasks, action) => {
 			let taskListTitleMod = [...state];
 			let modTaskTitleId = taskListTitleMod.findIndex(findTaskIdInState);
 			taskListTitleMod[modTaskTitleId].taskTitle = action.payLoad.target.value;
-			// taskListTitleMod[modTaskTitleId].editTaskTitle = !taskListTitleMod[modTaskTitleId]
-			// 	.editTaskTitle;
+
 			return taskListTitleMod;
 
 		case EDIT_TASK_DESCRYPTION:
@@ -65,24 +61,30 @@ const taskReducer = (state = tasks, action) => {
 			taskList[taskList.findIndex(findTaskIdInState)].taskDescription =
 				action.payLoad.target.value;
 			console.log(taskList)
+
 			return taskList;
 
 		case CHANGE_PRIORITY:
 			let newTaskList = [...state];
 			let taskIdInState = newTaskList.findIndex(findTaskIdInState);
 			newTaskList[taskIdInState].priority = !newTaskList[taskIdInState].priority;
+
 			return newTaskList;
 
 		case TASK_DONE:
 			let taskListCopy = [...state]
 			let indexOfDoneTask = taskListCopy.findIndex((task) => task.id === action.payLoad)
 			taskListCopy[indexOfDoneTask].done = !taskListCopy[indexOfDoneTask].done;
+
 			return taskListCopy;
+
 		case Add_TO_MY_Day:
-			let taskListBeforAddToMayDay = [...state]
+			let taskListBeforAddToMayDay = [...state];
 			let indexofTaskMarkMayDay = taskListBeforAddToMayDay.findIndex((task) => task.id === action.payLoad)
 			taskListBeforAddToMayDay[indexofTaskMarkMayDay].myDay = !taskListBeforAddToMayDay[indexofTaskMarkMayDay].myDay
-			return taskListBeforAddToMayDay
+
+			return taskListBeforAddToMayDay;
+
 		default:
 			return state;
 	}

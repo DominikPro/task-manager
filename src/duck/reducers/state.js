@@ -19,7 +19,7 @@ export let tasks = [
 		priority: true,
 		date: 1619129374000,
 		endDate: "",
-		myDay: false,
+		myDay: true,
 	},
 	{
 		id: 3,
@@ -30,7 +30,7 @@ export let tasks = [
 		priority: true,
 		date: 1619129374000,
 		endDate: "",
-		myDay: true,
+		myDay: false,
 	},
 	{
 		id: 4,

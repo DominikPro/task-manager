@@ -12,6 +12,7 @@ export const addTask = (newTask) => {
 	return {
 		type: ADD_TASK,
 		payLoad: newTask,
+
 	};
 };
 
@@ -68,6 +69,7 @@ export const taskDone = (itemId) => {
 }
 
 export const addToMyDay = (itemId) => {
+	console.log(itemId)
 	return {
 		type: Add_TO_MY_Day,
 		payLoad: itemId

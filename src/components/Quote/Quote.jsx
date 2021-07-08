@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
+//--------------------------------------------------------------------------------------------------
 import { Card, Row, Col, Button, Container } from "react-bootstrap/"
 import "./quote.css"
 
-
 const Quote = () => {
     const quotes = useSelector(state => state.quotesReducer)
-
     const [rundomQuoteNumber, setRundomQuoteNumber] = useState(0)
     const [x, setX] = useState(0)
     
@@ -18,13 +17,10 @@ const Quote = () => {
         drawAQuote()
     },[])
 
-
-
     return (
      
     <>
-        {/* <Container> */}
-
+       
             <div className="h50">
                 <Row className="justify-content-center align-items-center">
 
@@ -34,8 +30,11 @@ const Quote = () => {
 
                     <Col xs={12} md={8} className="mb-2  ">
                         <Card >
+
                             <Card.Header>Quote for you</Card.Header>
-                            <Card.Body  className="text-center ">
+
+                            <Card.Body className="text-center ">
+                                
                                 <blockquote className="blockquote mb-0">
                                     <p>
                                         {quotes[rundomQuoteNumber].quotation}
@@ -43,8 +42,10 @@ const Quote = () => {
                                     <footer className="blockquote-footer">
                                         Author <cite title="Source Title">{quotes[rundomQuoteNumber].author}</cite>
                                     </footer>
-                                    </blockquote>
-                                    <Button className="mt-2" variant="outline-info" onClick={() => drawAQuote()}> Next</Button>
+                                </blockquote>
+                                
+                                <Button onClick={() => drawAQuote()} className="mt-2" variant="outline-info" > Next</Button>
+                                    
                                 </Card.Body>
                                 
                         </Card>
@@ -52,7 +53,7 @@ const Quote = () => {
                 </Row>
             </div>
 
-       {/* </Container> */}
+     
 
     </>
 )
