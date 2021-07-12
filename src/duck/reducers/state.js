@@ -12,7 +12,7 @@ export let tasks = [
 	},
 	{
 		id: 2,
-		done: true,
+		done: false,
 		taskTitle: "Butter",
 		editTaskTitle: false,
 		taskDescription: "Testowy opis",
