@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 //--------------------------------------------------------------------------------------------------
-import { Card, Row, Col, Button, Container } from "react-bootstrap/"
+import { Card, Row, Col, Button, } from "react-bootstrap/"
 import "./quote.css"
 
 const Quote = () => {
     const quotes = useSelector(state => state.quotesReducer)
     const [rundomQuoteNumber, setRundomQuoteNumber] = useState(0)
-    const [x, setX] = useState(0)
     
     const drawAQuote = () => {
         setRundomQuoteNumber(Math.floor((Math.random() * 10)))
@@ -18,10 +17,8 @@ const Quote = () => {
     },[])
 
     return (
-     
     <>
-       
-            <div className="h50">
+            <div className="h50 mb-4">
                 <Row className="justify-content-center align-items-center">
 
                     <Col xs={12}  >

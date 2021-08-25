@@ -6,13 +6,14 @@ export const CHANGE_PRIORITY = "CHANGE_PRIORITY";
 export const SHOW_TASK_INPUT = "SHOW_TASK_INPUT";
 export const MODIFY_END_DATE = "MODIFY_END_DATE";
 export const TASK_DONE = "TASK_DONE";
-export const Add_TO_MY_Day = "Add_TO_MY_Day,";
+export const Add_TO_MY_Day = "Add_TO_MY_Day";
+export const SORT_TASKS = "SORT_TASKS";
+
 
 export const addTask = (newTask) => {
 	return {
 		type: ADD_TASK,
 		payLoad: newTask,
-
 	};
 };
 
@@ -75,4 +76,11 @@ export const addToMyDay = (itemId) => {
 		payLoad: itemId
 	}
 
+}
+
+export const sortTasks = (sortingType) => {
+	return {
+		type: SORT_TASKS,
+		payLoad: sortingType
+	}
 }

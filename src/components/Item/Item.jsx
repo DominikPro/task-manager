@@ -1,36 +1,49 @@
-import React, { useState, useContext, Children } from 'react';
+import React, { useState, useContext, Children, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 //--------------------------------------------------------------------------------------------------
-import { changePriority, editTaskDescryption, removeTask, editTaskTitle, showTaskInput, modifyEndDate, taskDone, addToMyDay } from "../../duck/actions/index";
-import { BsFillTrash2Fill, BsFillExclamationTriangleFill, BsCardList, BsFillBrightnessHighFill, BsCheckAll } from "react-icons/bs";
+import { changePriority, editTaskDescryption, removeTask, editTaskTitle, showTaskInput,  taskDone, addToMyDay, modifyEndDate } from "../../duck/actions/index";
+import { BsFillTrash2Fill, BsFillExclamationTriangleFill, BsCardList, BsFillBrightnessHighFill} from "react-icons/bs";
 import { Badge, Accordion, Card, Row, Col, Form, Button } from 'react-bootstrap/';
 import { MdDone } from "react-icons/md";
 //--------------------------------------------------------------------------------------------------
 import showDate from '../actions/shwoDate';
+import sortTasks from '../actions/sortTasks';
 import DatePickerInput from "../shared/DatePickerInput";
 import ContextAwareToggle from './ContextAwareToggle';
-import EmptyListInfo from "../EmptyListInfo/EmptyListInfo"
+import EmptyListInfo from "../EmptyListInfo/EmptyListInfo";
+
 
 const Item = (props) => {
+    let listType = props.listType;
+    const dispatch = useDispatch();
+    const tasks = useSelector(state => state.taskReducer);
+    const quotes = useSelector(state => state.quotesReducer);
 
-    const dispatch = useDispatch()
-    let [focus, setFocus] = useState(false)
-    const [numberOfItems, setNumberOfItems] = useState(0)
-    const tasks = useSelector(state => state.taskReducer)
-    const quotes = useSelector(state => state.quotesReducer)
+    const sortingType = useSelector(state=>state.sortTasks)
+    
+    const [sortedList, setSortedList] = useState([]);
+    let listOfTask = tasks.filter(task => task.done === false);
 
-    let listType = props.listType
+    useEffect(() => {
+     
+        setSortedList(sortTasks(sortingType, listOfTask));
+     
+    }, [tasks, tasks.endDate, sortingType])
 
+    
     if (listType === "todoList") {
-        if (tasks.some(item => item.done === false) === true) {
+        
+        if (sortedList.some(item => item.done === false) === true) {
+
             return (
                 <>
-                    {tasks.map(item => {
+                    {sortedList.map(item => {
                         if (item.done === false) {
                             return (
                                 <Row className="justify-content-center  align-items-center ">
 
                                     <Col xs={12} lg={10} >
+                                       
 
                                         <Accordion defaultActiveKey="1" id={item.id} key={item.id} >
                                             <Card.Header>
@@ -92,8 +105,13 @@ const Item = (props) => {
                                                                     </Col>
                                                                     <Col xs={5}>
                                                                         <Badge className="mr-2" pill variant="info">Completion date</Badge>
-                                                                        <DatePickerInput endDate={item.endDate} setEndDate={(slecetedDate) => dispatch(modifyEndDate(slecetedDate, item.id))}></DatePickerInput>
+                                                                        
+                                                                        <DatePickerInput endDate={item.endDate} setEndDate={(slecetedDate) => dispatch(modifyEndDate(slecetedDate, item.id))}/>
+                                                                        {/* <DatePickerInput endDate={item.endDate} /> */}
+                                                                        
+
                                                                     </Col>
+
                                                                 </Row>
 
                                                                 <Row className="mb-2">
@@ -109,7 +127,7 @@ const Item = (props) => {
                                                                 </Row>
                                                                 <Row  >
                                                                     <Col xs={5} >
-                                                                        <Button onClick={(e) => dispatch(removeTask(e))} className="ml-2 " id={item.id} variant="danger" size="sm"><BsFillTrash2Fill size={20} className="mr-2" />Delet</Button>
+                                                                        <Button onClick={(e) => dispatch(removeTask(e))} id={item.id}  className="ml-2 " variant="danger" size="sm"><BsFillTrash2Fill size={20} className="mr-2" />Delet</Button>
                                                                     </Col>
                                                                     <Col xs={7} className="d-flex justify-content-end" >
                                                                         {item.myDay ?
@@ -217,7 +235,8 @@ const Item = (props) => {
                                                                     <Col xs={5}>
                                                                         <Badge className="mr-2" pill variant="info">Completion date</Badge>
                                                                         
-                                                                        <DatePickerInput endDate={item.endDate} setEndDate={(slecetedDate) => dispatch(modifyEndDate(slecetedDate, item.id))}></DatePickerInput>
+                                                                        <DatePickerInput endDate={item.endDate} setEndDate={(slecetedDate) => dispatch(modifyEndDate(slecetedDate, item.id))} />
+                                                                        {/* <DatePickerInput endDate={item.endDate} /> */}
                                                                     </Col>
 
 
@@ -342,7 +361,8 @@ const Item = (props) => {
                                                                     <Col xs={5}>
                                                                         <Badge className="mr-2" pill variant="info">Completion date</Badge>
                                                                         {/* <h5>{showDate(item.endDate)}</h5> */}
-                                                                        <DatePickerInput endDate={item.endDate} setEndDate={(slecetedDate) => dispatch(modifyEndDate(slecetedDate, item.id))}></DatePickerInput>
+                                                                        <DatePickerInput endDate={item.endDate} setEndDate={(slecetedDate) => dispatch(modifyEndDate(slecetedDate, item.id))}/>
+                                                                        {/* <DatePickerInput endDate={item.endDate} /> */}
                                                                     </Col>
 
 

@@ -34,6 +34,7 @@ const DatePickerInput = (props) => {
 	return (
 
 		<DatePicker
+		    readonly="readonly"
 			isClearable
 			locale="en-gb"
 			showWeekNumbers
@@ -43,7 +44,7 @@ const DatePickerInput = (props) => {
 			selected={endDate? StartDateSelected() : startDate}
 			closeOnScroll={e => e.target === document}
 			placeholderText="When do you start?"
-			onChange={(date) => { setStartDate(date); setEndDate(Date.parse(date))}}
+			onChange={(date) => { setStartDate(date); setEndDate(Date.parse(date)) }}
 
 		/>
 	);

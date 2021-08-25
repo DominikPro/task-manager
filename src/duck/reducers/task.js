@@ -44,8 +44,7 @@ const taskReducer = (state = tasks, action) => {
 			const itemIndex = taskListEnddate.findIndex((task) => {
 				return task.id === action.payLoad.id;
 			});
-			const modTaskListEnddate = (taskListEnddate[itemIndex].endDate =
-				action.payLoad.slecetedDate);
+			taskListEnddate[itemIndex].endDate = action.payLoad.slecetedDate
 
 			return taskListEnddate;
 
@@ -60,7 +59,6 @@ const taskReducer = (state = tasks, action) => {
 			let taskList = [...state];
 			taskList[taskList.findIndex(findTaskIdInState)].taskDescription =
 				action.payLoad.target.value;
-			console.log(taskList)
 
 			return taskList;
 
@@ -84,6 +82,8 @@ const taskReducer = (state = tasks, action) => {
 			taskListBeforAddToMayDay[indexofTaskMarkMayDay].myDay = !taskListBeforAddToMayDay[indexofTaskMarkMayDay].myDay
 
 			return taskListBeforAddToMayDay;
+
+
 
 		default:
 			return state;
