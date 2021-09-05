@@ -35,7 +35,7 @@ const Weather = () => {
 
 		<Row className="justify-content-center align-items-center">
 			{loading ?
-				<Col className="mt-5" xs={10} sm={6} md={3} xl={2}>
+				<Col className="mt-3" xs={12} sm={6} md={3} xl={2}>
 					<Card className="text-center"  >
 						<Card.Header>Weather</Card.Header>
 						<Card.Body>

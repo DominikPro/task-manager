@@ -12,23 +12,33 @@ import DatePickerInput from "../shared/DatePickerInput";
 import ContextAwareToggle from './ContextAwareToggle';
 import EmptyListInfo from "../EmptyListInfo/EmptyListInfo";
 
-
 const Item = (props) => {
     let listType = props.listType;
     const dispatch = useDispatch();
     const tasks = useSelector(state => state.taskReducer);
-    const quotes = useSelector(state => state.quotesReducer);
 
     const sortingType = useSelector(state=>state.sortTasks)
     
     const [sortedList, setSortedList] = useState([]);
-    let listOfTask = tasks.filter(task => task.done === false);
+    
+    //The function returns a collection of tasks compatible with the parameter obtained from props
+    let listOfTask = () => {
+        if (listType === "todoList") {
+            return tasks.filter(item => item.done === false)
+        } else if (listType === "myDay") {
+            return tasks.filter(item => item.myDay === true)
+            
+        }else if (listType === "done") {
+            return tasks.filter(item => item.done === true)
+            
+        }
+    }
 
     useEffect(() => {
+        console.log(listOfTask)
+        setSortedList(sortTasks(sortingType, listOfTask()));
      
-        setSortedList(sortTasks(sortingType, listOfTask));
-     
-    }, [tasks, tasks.endDate, sortingType])
+    }, [tasks, tasks.endDate, tasks.priority, tasks.myDay, sortingType])
 
     
     if (listType === "todoList") {
@@ -38,7 +48,7 @@ const Item = (props) => {
             return (
                 <>
                     {sortedList.map(item => {
-                        if (item.done === false) {
+                        // if (item.done === false) {
                             return (
                                 <Row className="justify-content-center  align-items-center ">
 
@@ -150,7 +160,7 @@ const Item = (props) => {
                                     </Col>
                                 </Row>
                             )
-                        }
+                        // }
                          
                     })}
 
@@ -163,11 +173,11 @@ const Item = (props) => {
     }
 //--------------------------------------------------------------------------------------------------
     if (listType === "myDay") {
-        if (tasks.some(item => item.myDay === true) === true) {
+        if (sortedList.some(item => item.myDay === true) === true) {
             return (
                 <>
-                    {tasks.map(item => {
-                        if (item.myDay === true) {
+                    {sortedList.map(item => {
+                        // if (item.myDay === true) {
                             return (
 
                                 <Row className="justify-content-center  align-items-center">
@@ -277,7 +287,7 @@ const Item = (props) => {
                                     </Col>
                                 </Row>
                             )
-                        }
+                        // }
                     })}
                 </>
             )
@@ -287,11 +297,11 @@ const Item = (props) => {
     }
 //--------------------------------------------------------------------------------------------------     
     if (listType === "done") {
-        if (tasks.some(item => item.done === true) === true) {
+        if (sortedList.some(item => item.done === true) === true) {
             return (
                 <>
-                    {tasks.map(item => {
-                        if (item.done === true) {
+                    {sortedList.map(item => {
+                        // if (item.done === true) {
 
                             return (
 
@@ -403,7 +413,7 @@ const Item = (props) => {
                                     </Col>
                                 </Row>
                             )
-                        }
+                        // }
 
                     })}
 

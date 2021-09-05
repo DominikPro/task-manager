@@ -26,5 +26,13 @@ const sortTasks = (sortingType, listOfTask) => {
         sorted = listOfTask.sort((a, b) => { return (b.endDate - a.endDate) })
         return (sorted)
     }
+    else if (sortingType === "importantFirst") {
+        sorted = listOfTask.sort((a, b) => { return (b.priority - a.priority) })
+        return (sorted)
+    }
+    else if (sortingType === "myDay") {
+        sorted = listOfTask.sort((a, b) => { return (b.myDay - a.myDay) })
+        return (sorted)
+    }
 }
 export default sortTasks;

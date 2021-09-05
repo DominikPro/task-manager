@@ -4,11 +4,9 @@ import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
 
 const AlertInfo = () => {
-
   const [show, setShow] = useState(true);
   
   return (
-    
 		<>
       <Alert show={show} variant="success">
         
@@ -26,8 +24,7 @@ const AlertInfo = () => {
         </div>
         
 			</Alert>
-    </>
-    
+    </> 
   );
   
 };

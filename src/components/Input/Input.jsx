@@ -31,18 +31,20 @@ export const Input = () => {
 //--------------------------------------------------------------------------------------------------
 	return (
 		<Row
-			className="justify-content-center cbg-light"
+			className="justify-content-center  cbg-light "
 			onFocus={() => { setOpen(true); setNewTask((prevState) => ({ ...prevState, ["id"]: uuidv4(), ["date"]: today })) }}
 			
 		>
-			<Col id="navigation" xs={12} md={10} lg={8} >
+			{/* <Col id="navigation"  className="d-flex " xs={12} md={10} lg={8} > */}
+			<Col id="navigation"   xs={12} md={10} lg={8} >
 
-				<InputGroup className="mb-1 mt-2" >
+				<InputGroup  className="mb-1 mt-2 align-items-center" >
 					<FormControl
+						
 						onChange={() => setNewTask((prevState) => ({ ...prevState, ["taskTitle"]: refTaskTitle.current.value }))}
 						value={newTask.taskTitle}
 						ref={refTaskTitle}		
-						placeholder="Describe the challenge"
+						placeholder="Describe the challenge:"
 						aria-label="Describe the challenge"
 						aria-describedby="Describe the challenge"
 					/>
@@ -55,8 +57,8 @@ export const Input = () => {
 				</InputGroup>
 				{open ? (
 					<Card.Body >
-						<Row className="mb-5  ">
-							<Col className="mb-2" xs={12} sm={ 3} >
+						<Row className="mb-5 d-flex justify-content-around ">
+							<Col className="mb-2" xs={12} sm={ 4} >
 								<Form.Check
 									onClick={() => setNewTask((prevState) => ({ ...prevState, ["priority"]: !prevState.priority }))}
 									checked={newTask.priority}
@@ -64,7 +66,7 @@ export const Input = () => {
 								/>
 							</Col >
 
-							<Col xs={12} sm={5}>
+							<Col xs={12} sm={6}>
 								<Badge className="mb-1"  pill variant="info">Execution time:</Badge>
 								<DatePickerInput setEndDate={(slecetedDate) => setNewTask((prevState) => ({ ...prevState, ["endDate"]: slecetedDate }))} resetDate={newTask.date} />
 
