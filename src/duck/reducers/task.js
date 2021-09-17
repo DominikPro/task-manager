@@ -83,8 +83,6 @@ const taskReducer = (state = tasks, action) => {
 
 			return taskListBeforAddToMayDay;
 
-
-
 		default:
 			return state;
 	}
