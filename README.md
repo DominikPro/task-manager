@@ -1,15 +1,4 @@
-![List of challenges](https://user-images.githubusercontent.com/35029684/138778930-57896d97-b33d-4371-903a-b00922846cdc.gif)
-
-
-
-
-
-
-
-
-
-
-
+![List of challenges](https://user-images.githubusercontent.com/35029684/138779473-5aace148-358d-4dab-8e89-16707b2a7cd6.gif)
 
 
 
